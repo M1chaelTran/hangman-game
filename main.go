@@ -90,7 +90,6 @@ func main() {
 			fmt.Println("You already entered this letter")
 			continue
 		}
-		enteredLetter[letter] = true
 
 		if len(input) != 1 {
 			fmt.Println("Please enter a single letter")
@@ -102,6 +101,7 @@ func main() {
 		} else {
 			hangmanState++
 		}
+		enteredLetter[letter] = true
 		printGameState(targetWord, guessedLetters, hangmanState, enteredLetter)
 
 	}
@@ -196,8 +196,8 @@ func printStatusArt(state string) {
 	fmt.Println(string(data))
 }
 
-func printEnteredLetters(letter map[rune]bool) {
-	println("Entered letters: " + strings.Join(getEnteredLetters(letter), ", "))
+func printEnteredLetters(letters map[rune]bool) {
+	println("Entered letters: " + strings.Join(getEnteredLetters(letters), ", "))
 }
 
 func getEnteredLetters(enteredLetters map[rune]bool) []string {
